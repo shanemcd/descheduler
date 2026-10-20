@@ -145,7 +145,7 @@ func CreatePrometheusClient(prometheusURL, authToken string) (promapi.Client, *h
 		TLSHandshakeTimeout: 10 * time.Second,
 		TLSClientConfig: &tls.Config{
 			RootCAs:    caCertPool,
-			ServerName: u.Host,
+			ServerName: u.Hostname(),
 		},
 	}
 	roundTripper := transport.NewBearerAuthRoundTripper(
